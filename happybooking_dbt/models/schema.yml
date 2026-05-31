@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: fabric_source
+    database: HappyBooking_Lakehouse
+    schema: dbo
+    tables:
+      - name: hotel_raw_stream
+        columns:
+          - name: hotel_name
+            tests:
+              - not_null
+          - name: booking_id
+            tests:
+              - not_null
+          - name: total_price
+            tests:
+              - not_null
+
+models:
+  - name: fact_booking
+    description: "Her rezervasyon için fact tablosu"
+    columns:
+      - name: booking_id
+        tests:
+          - not_null
+      - name: hotel_name
+        tests:
+          - not_null
+      - name: total_price
+        tests:
+          - not_null
+
+  - name: dim_city
+    description: "Şehir ve otel boyut tablosu"
+    columns:
+      - name: country
+        tests:
+          - not_null
+
+  - name: kpi_revenue
+    description: "Otel bazında revenue KPI"
+    columns:
+      - name: hotel_name
+        tests:
+          - not_null
+      - name: total_revenue
+        tests:
+          - not_null

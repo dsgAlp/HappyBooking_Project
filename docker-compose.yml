@@ -1,0 +1,19 @@
+services:
+  stream_producer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./data:/app/data
+    restart: "no"
+
+  dbt_quality_check:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile_dbt
+    volumes:
+      - ./happybooking_dbt:/usr/app/dbt_project
+    environment:
+      - DBT_PROFILES_DIR=/usr/app/dbt_project
+    depends_on:
+      - stream_producer

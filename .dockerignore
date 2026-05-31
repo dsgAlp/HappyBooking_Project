@@ -1,0 +1,9 @@
+booking_dirty.csv
+data/
+notebooks/
+docs/
+.git/
+*.csv
+*.ipynb
+__pycache__/
+.DS_Store
