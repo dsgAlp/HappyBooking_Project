@@ -1,0 +1,10 @@
+*.csv
+*.parquet
+data/
+booking_dirty.csv
+venv/
+venv311/
+__pycache__/
+.DS_Store
+target/
+logs/
