@@ -28,11 +28,11 @@ jobs:
         run: |
           pip install dbt-core dbt-fabric
 
-      - name: dbt compile
+      - name: dbt parse
         env:
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         run: |
           cd happybooking_dbt
-          dbt compile --profiles-dir .
+          dbt parse --profiles-dir .
